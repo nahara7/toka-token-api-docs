@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: Toka Token API
+  version: 1.0.0
+paths:
+  /login:
+    post:
+      description: Login to system
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          description: A user is created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        500:
+          $ref: '#/components/responses/500ApiError'
+components:    
+  schemas:
+    User:
+      type: object
+      required: 
+        - name
+      properties:
+        username:
+          type: string
+          example: "user1234"
+          required: true
+        password:
+          type: string
+          example: "tokeitmkay"
+          required: true
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  responses:
+    500ApiError:
+      description: More details here soon
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: string
+                example: 500
+              message:
+                type: string
+                example: More details here soon
+  
