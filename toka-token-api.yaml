@@ -30,11 +30,9 @@ components:
         username:
           type: string
           example: "user1234"
-          required: true
         password:
           type: string
           example: "tokeitmkay"
-          required: true
   securitySchemes:
     BearerAuth:
       type: http
